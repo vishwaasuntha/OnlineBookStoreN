@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+<h2 class="mb-4">Admin Dashboard</h2>
+
+<div class="row">
+
+    <div class="col-md-3">
+        <div class="card bg-primary text-white p-3">
+            Books: @ViewBag.TotalBooks
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-success text-white p-3">
+            Categories: @ViewBag.TotalCategories
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-warning text-white p-3">
+            Orders: @ViewBag.TotalOrders
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="card bg-danger text-white p-3">
+            Customers: @ViewBag.TotalCustomers
+        </div>
+    </div>
+
+</div>
+<div class="container mt-5">
+    @if (Context.Session.GetString("Role") == "Admin")
+    {
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+                <a href="/Books/Index" class="text-decoration-none">
+                    <div class="card shadow p-4 text-center">
+                        <h5>Manage Books</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <a href="/Categories/Index" class="text-decoration-none">
+                    <div class="card shadow p-4 text-center">
+                        <h5>Manage Categories</h5>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <a href="/Admin/ManageOrders" class="text-decoration-none">
+                    <div class="card shadow p-4 text-center">
+                        <h5>Manage Orders</h5>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            Access Denied
+        </div>
+    }
+
+</div>

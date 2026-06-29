@@ -1,0 +1,23 @@
+﻿@model List<OnlineBookStore.Models.Category>
+
+<h2>Categories</h2>
+
+<a asp-action="Create"
+   class="btn btn-primary mb-3">
+    Add Category
+</a>
+
+<table class="table table-bordered">
+
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.Name</td>
+            <td>
+                <a href="/Categories/Edit/@c.Id">Edit</a> |
+                <a href="/Categories/Delete/@c.Id">Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,51 @@
+﻿@model List<OnlineBookStore.Models.CartItem>
+
+<h2>Your Cart</h2>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Book</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Total</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var c in Model)
+    {
+        <tr>
+
+            <td>
+                @if (c.Book != null)
+                {
+                    <h6>@c.Book.Title</h6>
+                }
+                else
+                {
+                    <span class="text-danger">Book not found</span>
+                }
+            </td>
+
+            <td>@c.Book.Price</td>
+
+            <td>
+                <form method="post" action="/Cart/UpdateQuantity">
+                    <input type="hidden" name="id" value="@c.Id" />
+                    <input type="number" name="quantity" value="@c.Quantity" />
+                    <button class="btn btn-sm btn-primary">Update</button>
+                </form>
+            </td>
+
+            <td>@(c.Book.Price* c.Quantity)</td>
+
+            <td>
+                <a href="/Cart/Remove/@c.Id" class="btn btn-danger btn-sm">Remove</a>
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<a href="/Cart/Checkout" class="btn btn-success">Checkout</a>

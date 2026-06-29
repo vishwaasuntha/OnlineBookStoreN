@@ -1,0 +1,43 @@
+﻿@model List<OnlineBookStore.Models.Book>
+
+<h2>Manage Books</h2>
+
+<a href="/Books/Create" class="btn btn-success mb-2">Add Book</a>
+
+<table class="table table-bordered">
+
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var b in Model)
+    {
+        <tr>
+            
+            <td>@b.Title</td>
+            <td>@b.Author</td>
+            <td>@b.Price</td>
+            <td>
+                <img src="@Url.Content("~/images/books/" + System.IO.Path.GetFileName(b.ImageUrl))"
+                     width="80"
+                     height="100"
+                     style="object-fit:cover;" />
+            </td>
+            <td>
+                @if (ViewBag.IsAdmin == true)
+                {
+                    <a class="btn btn-success" href="/Books/Create">Add Book</a>
+                    <a class="btn btn-warning" href="/Books/Edit/@b.Id">Edit</a>
+                    <a class="btn btn-danger" href="/Books/Delete/@b.Id">Delete</a>
+                }
+           <!--     <a href="/Books/Edit/@*@b.Id *@" class="btn btn-warning btn-sm">Edit</a>
+                     <a href="/Books/Delete/@*@b.Id*@" class="btn btn-danger btn-sm">Delete</a>-->
+            </td>
+        </tr>
+    }
+
+</table>

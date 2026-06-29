@@ -1,0 +1,25 @@
+﻿@model OnlineBookStore.Models.Book
+
+<div class="row">
+
+    <div class="col-md-4">
+        <img src="@Model.ImageUrl"
+             class="img-fluid"
+             style="max-height:400px;" />
+    </div>
+
+    <div class="col-md-8">
+
+        <h2>@Model.Title</h2>
+        <h5>@Model.Author</h5>
+        <p>@Model.Description</p>
+
+        <h4>$@Model.Price</h4>
+
+        <a href="/Cart/AddToCart?bookId=@Model.Id" class="btn btn-success">
+            Add to Cart
+        </a>
+
+    </div>
+
+</div>

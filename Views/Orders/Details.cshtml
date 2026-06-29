@@ -1,0 +1,25 @@
+﻿@model OnlineBookStore.Models.Order
+
+<h2>Order Details</h2>
+
+<p>Order ID: @Model.Id</p>
+<p>Status: @Model.Status</p>
+
+<table class="table">
+
+    <tr>
+        <th>Book</th>
+        <th>Qty</th>
+        <th>Price</th>
+    </tr>
+
+    @foreach (var item in Model.OrderItems)
+    {
+        <tr>
+            <td>@item.Book.Title</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+        </tr>
+    }
+
+</table>
